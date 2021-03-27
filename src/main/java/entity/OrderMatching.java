@@ -22,7 +22,7 @@ public class OrderMatching {
 
     @Override
     public String toString() {
-        return String.format("{0:0.00}", buyOrderId) + " " + price + " " + quantity + " " +  String.format("{0:0.00}", buyOrderId) ;
+        return buyOrderId + " " + String.format("%.2f", price) + " " + quantity + " " + sellOrderId ;
     }
 }
 
