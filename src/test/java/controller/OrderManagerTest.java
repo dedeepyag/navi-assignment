@@ -42,7 +42,7 @@ class OrderManagerTest {
         for(Order order: orders){
             orderManager.fulfillOrder(order);
         }
-        Assertions.assertEquals(10.00, orderManager.getOrdersMatched().get(0).getPrice());
+        Assertions.assertEquals(new Double(10.00), orderManager.getOrdersMatched().get(0).getPrice());
     }
 
     @Test
