@@ -20,12 +20,7 @@ public class Driver {
 
             OrderManager orderManager = new OrderManager();
             List<OrderMatching> ordersMatched = orderManager.processOrders(orderInputData);
-
-            System.out.println("Output after matching the orders in the below format");
-            System.out.println("<buy-order-id> <sell-price> <qty> <sell-order-id>");
-            System.out.println("--------------------------------------------");
             ordersMatched.forEach(orderMatched -> System.out.println(orderMatched.toString()));
-            System.out.println("--------------------------------------------");
 
         }catch (Exception e){
             System.out.println("Stock Exchange System - Error occurred: " + e.getMessage());
