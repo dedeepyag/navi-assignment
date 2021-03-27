@@ -33,6 +33,7 @@ dependencies {
 
 jar {
     archiveBaseName = 'geektrust' //Please do not change this final artifact name
+    version = null
     manifest {
         attributes 'Main-Class' : 'controller.Driver' //This is main class of your program which will be executed
     }
