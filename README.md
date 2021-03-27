@@ -10,8 +10,8 @@ jar -jar build/libs/geektrust-1.0-SNAPSHOT.jar <Path to input file>
 
 Assumptions/Validations/Notes:
 1. Used the same geektrust word for the finally built jar according to the instructions
-2. Given input in the question file is not formatted properly.
-   I am assuming only space to be the delimiter and parse accordingly
+2. Given input in the question file is not formatted properly. 
+   Accommodated both space and double space as delimiters to be able to run the tests.
 3. Question mentioned both stdin as input and text file as input in different
 places - considering input from text file and output printed on stdout
 4. Time is considered to be in default time zone of the system and converted to

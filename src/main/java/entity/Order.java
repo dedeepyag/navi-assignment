@@ -1,12 +1,18 @@
 package entity;
 
 import lombok.Data;
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class Order {
@@ -35,24 +41,28 @@ public class Order {
     public Order(String input){
         if(input != null){
             try{
-                String[] inputParams = input.split(" ");
-                if(inputParams != null){
-                    this.id = inputParams[0];
+                String[] inputParamsArray = input.split(" ");
+                List<String> inputParams = Arrays.asList(inputParamsArray).stream()
+                        .filter(inputParam -> (inputParam != null && inputParam.length() > 0))
+                        .collect(Collectors.toList());
 
-                    LocalTime localTime = LocalTime.parse(inputParams[1]);
+                if(inputParams != null){
+                    this.id = inputParams.get(0);
+
+                    LocalTime localTime = LocalTime.parse(inputParams.get(1));
                     LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now(), localTime);
                     this.timestamp = localDateTime.atZone
                         (ZoneId.systemDefault()).toInstant().toEpochMilli();
 
-                    this.stock = inputParams[2];
+                    this.stock = inputParams.get(2);
 
-                    OrderType orderType = OrderType.valueOf(inputParams[3]);
+                    OrderType orderType = OrderType.valueOf(inputParams.get(3));
                     this.orderType = orderType;
 
-                    Double price = Double.parseDouble(inputParams[4]);
+                    Double price = Double.parseDouble(inputParams.get(4));
                     this.price = price;
 
-                    Integer quantity = Integer.parseInt(inputParams[5]);
+                    Integer quantity = Integer.parseInt(inputParams.get(5));
                     this.quantity = quantity;
                 }
             }catch ( DateTimeParseException | IndexOutOfBoundsException | IllegalArgumentException  e){

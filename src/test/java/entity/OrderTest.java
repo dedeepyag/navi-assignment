@@ -15,6 +15,12 @@ class OrderTest {
     }
 
     @Test
+    public void orderDoubleSpace(){
+        Order order = new Order("#1 09:45 BAC buy  240.12 100");
+        Assertions.assertEquals(new Integer(100), order.getQuantity());
+    }
+
+    @Test
     public void orderIllegalTime(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Order order = new Order("#1 255:45 BAC buy 240.12 100");
